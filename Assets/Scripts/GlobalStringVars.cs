@@ -8,7 +8,7 @@ namespace RunAndGun.Space
         public const KeyCode USE_KEY = KeyCode.F;
         public const string FIRE_1 = "Fire1";
         public const string FIRE_2 = "Fire2";
-        public const string CROUCH = "crouch";
+        public const KeyCode CROUCH = KeyCode.C;
         public const string HORIZONTAL_AXIS = "Horizontal";
         public const string MOUSE_SCROLL_WHEEL = "Mouse ScrollWheel";
         public const string VERTICAL_AXIS = "Vertical";

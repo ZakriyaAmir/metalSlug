@@ -61,6 +61,10 @@ namespace RunAndGun.Space
                 {
                     weapon.ReloadWeaponStart();
                 }
+                if (Input.GetKeyDown(GlobalStringVars.CROUCH))
+                {
+                    playerMovement.Crouch();
+                }
             }
             else
             {

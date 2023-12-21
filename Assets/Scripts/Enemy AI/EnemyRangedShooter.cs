@@ -24,7 +24,7 @@ namespace RunAndGun.Space
         public void ShootAtTarget()
         {
             Transform _projectile = Instantiate(projectilePrefab, this.transform.position, Quaternion.identity);
-            ProjectileDamager _projectileDamager = _projectile.GetComponent<ProjectileDamager>();
+            bullet_Damager _projectileDamager = _projectile.GetComponent<bullet_Damager>();
             _projectileDamager.ProjectileSettings = new ProjectileSettings(damageDealSphereRadius, damageDealValue, speed, targetMask);
             _projectileDamager.SendProjectile(target + new Vector3(0f, targetHeight, 0f), LowShoot);
         }

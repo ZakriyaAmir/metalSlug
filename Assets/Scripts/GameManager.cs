@@ -48,6 +48,7 @@ namespace RunAndGun.Space
         private void Awake()
         {
             Instance = this;
+            Application.targetFrameRate = 120;
             GlobalBuffer.Reset();
         }
 

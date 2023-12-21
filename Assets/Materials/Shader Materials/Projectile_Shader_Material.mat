@@ -44,7 +44,7 @@ Material:
     - _Voronoi_Angle: 1
     - _Voronoi_Cell_Density: 12
     m_Colors:
-    - _Base_Color: {r: 0, g: 47.937256, b: 0, a: 1}
+    - _Base_Color: {r: 1.8113213, g: 1.8113213, b: 1.8113213, a: 1}
     - _Color: {r: 0.40485263, g: 0.8490566, b: 0, a: 0}
     - _UV_Offset: {r: -0.15, g: -0.06, b: 0, a: 0}
     - _UV_Tiling: {r: 1, g: 1, b: 0, a: 0}
