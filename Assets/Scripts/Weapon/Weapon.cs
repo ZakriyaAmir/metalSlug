@@ -7,7 +7,7 @@ namespace RunAndGun.Space
         [SerializeField] private Transform firePoint;
         [SerializeField] private int ammoCapacity = 15;
         [SerializeField] private Transform bulletPrefab;
-        [SerializeField] private bool infiniteAmmo = false;
+        [SerializeField] public bool infiniteAmmo = false;
         [SerializeField] private float bulletSpeed = 300f;
         [SerializeField] private float fireRateInSeconds = 0.2f;
         [SerializeField] private float reloadSpeed = 1f;
@@ -19,12 +19,28 @@ namespace RunAndGun.Space
         private int ammoIndex;
         private float fireRateTimer = 0f;
         private float reloadTimer = 0f;
-        private bool reloading = false;
+        public bool reloading = false;
+        public bool defaultWeapon;
+        public Transform leftHandIk;
+        public Transform rightHandIk;
 
         private void Awake()
         {
             GameManager.Instance.weapon = this;
         }
+
+        private void OnEnable()
+        {
+            Invoke("setLeftHandPosition", 0.1f);
+        }
+
+        private void setLeftHandPosition() 
+        {
+            GameManager.Instance.UpdateAmmo();
+            GameManager.Instance.playerMovement.leftHandIK.data.target.position = leftHandIk.position;
+            GameManager.Instance.playerMovement.leftHandIK.data.target.rotation = leftHandIk.rotation;
+        }
+
 
         private void Start()
         {
@@ -32,6 +48,10 @@ namespace RunAndGun.Space
             GlobalBuffer.gamePoints.CurrentAmmoCount = ammoLeft;
             recoilControl = GameManager.Instance.recoilControl;
             InstantiateAmmoCapacity();
+            if (defaultWeapon)
+            {
+                GameManager.Instance.defaultWeapon = this;
+            }
         }
 
         private void Update()
@@ -109,9 +129,9 @@ namespace RunAndGun.Space
         {
             if(!reloading && ammoLeft != ammoCapacity)
             {
-                reloadTimer = reloadSpeed;
-                reloading = true;
-                GameManager.Instance.ReloadWeaponStart();
+                Debug.Log("Select Default Gun");
+                GameManager.Instance.selectDefaultWeapon();
+                Destroy(gameObject);
             }
         }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Animations.Rigging;
 
 namespace RunAndGun.Space
 {
@@ -23,6 +24,9 @@ namespace RunAndGun.Space
         private bool jumping = false;
         private bool stuckJump = false;
         public Rigidbody rigidBody;
+        public Transform gunsParent;
+        public TwoBoneIKConstraint leftHandIK;
+
         public float HorizontalVelocity { get { return transform.InverseTransformVector(rigidBody.velocity).x; } }
         public float VecrticalVelocity { get { return rigidBody.velocity.y; } }
 

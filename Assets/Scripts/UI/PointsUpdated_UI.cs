@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 namespace RunAndGun.Space
@@ -51,7 +51,15 @@ namespace RunAndGun.Space
                     value = GlobalBuffer.gamePoints.CurrentHealth;
                     break;
                 case GameResultValueType.CurrentAmmoRounds:
-                    value = GlobalBuffer.gamePoints.CurrentAmmoCount;
+                    if (GameManager.Instance.weapon.infiniteAmmo)
+                    {
+                        text.text = "∞";
+                        return;
+                    }
+                    else
+                    {
+                        value = GlobalBuffer.gamePoints.CurrentAmmoCount;
+                    }
                     break;
                 default:
                     break;

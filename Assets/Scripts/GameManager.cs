@@ -36,6 +36,7 @@ namespace RunAndGun.Space
         public Transform aimTarget;
         public RecoilControl recoilControl;
         public Weapon weapon;
+        public Weapon defaultWeapon;
         private bool isFireButtonDown;
 
         // necessary components for other classes
@@ -56,6 +57,13 @@ namespace RunAndGun.Space
         {
             EnemyHealthBar_UI = GameObject.FindObjectOfType<EnemyHealthBar_UI>();
             UpdateGameState(StartingState);
+        }
+
+        public void selectDefaultWeapon() 
+        {
+            weapon = defaultWeapon;
+            playerInput.weapon = defaultWeapon;
+            defaultWeapon.gameObject.SetActive(true);
         }
 
         public void UpdateGameState(GameState newState)
