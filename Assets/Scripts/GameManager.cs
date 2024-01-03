@@ -1,3 +1,5 @@
+using Cinemachine;
+using Firebase.Analytics;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -38,6 +40,12 @@ namespace RunAndGun.Space
         public Weapon weapon;
         public Weapon defaultWeapon;
         private bool isFireButtonDown;
+        public GameObject player;
+        public GameObject[] playerPrefabs;
+        public GameObject[] allLevels;
+        public GameObject currentLevel;
+        public int totalEarnings;
+        public GameObject tutorialPanel;
 
         // necessary components for other classes
         public Transform playerTransform;
@@ -46,17 +54,67 @@ namespace RunAndGun.Space
         // reference to selected enemy
         public EnemyHealthBar_UI EnemyHealthBar_UI;
 
+        public static GameManager instance;
+
         private void Awake()
         {
             Instance = this;
             Application.targetFrameRate = 120;
             GlobalBuffer.Reset();
+
+            if (instance != null)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                instance = this;
+            }
+
+            player = Instantiate(playerPrefabs[PlayerPrefs.GetInt("selectedPlayer", 0)]);
+            FindObjectOfType<CinemachineVirtualCamera>().Follow = player.transform;
+            FindObjectOfType<CinemachineVirtualCamera>().LookAt = player.transform;
+
+            //Reset current level if the total levels count exceeds
+            if (PlayerPrefs.GetInt("currentLevel", 0) >= allLevels.Length)
+            {
+                Debug.Log("Levels Reset");
+                PlayerPrefs.SetInt("currentLevel", 0);
+
+                //GA Event
+                FirebaseAnalytics.LogEvent("All_Levels" + "_Cleared");
+            }
+
+            currentLevel = Instantiate(allLevels[PlayerPrefs.GetInt("currentLevel", 0)]);
+        }
+
+        public void claimLevelReward()
+        {
+            economyManager.Instance.addMoney(totalEarnings);
+            //GA Event
+            FirebaseAnalytics.LogEvent("Level_Reward_" + totalEarnings);
         }
 
         private void Start()
         {
             EnemyHealthBar_UI = GameObject.FindObjectOfType<EnemyHealthBar_UI>();
             UpdateGameState(StartingState);
+
+            audioManager.instance.PlayAudio("gameplayBGM", false, Vector3.zero);
+
+            if (PlayerPrefs.GetInt("tutorial", 1) == 1)
+            {
+                tutorialPanel.SetActive(true);
+            }
+
+            //GA Event
+            FirebaseAnalytics.LogEvent("Level_Started_" + PlayerPrefs.GetInt("currentLevel", 0));
+        }
+
+        public void acceptTutorial() 
+        {
+            tutorialPanel.SetActive(false);
+            PlayerPrefs.SetInt("tutorial", 0);
         }
 
         public void selectDefaultWeapon() 
@@ -84,11 +142,19 @@ namespace RunAndGun.Space
                     Cursor.visible = true;
                     GlobalBuffer.CalculateTimeSpent();
                     GlobalBuffer.failed = true;
+                    if (audioManager.instance.vibrationBool)
+                    {
+                        Handheld.Vibrate();
+                    }
                     //GoToEndScene();
                     break;
                 case GameState.LevelVictory:
                     Cursor.visible = true;
                     GlobalBuffer.CalculateTimeSpent();
+                    if (audioManager.instance.vibrationBool)
+                    {
+                        Handheld.Vibrate();
+                    }
                     GoToEndScene();
                     break;
                 case GameState.LevelGameOver:
