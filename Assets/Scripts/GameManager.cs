@@ -43,7 +43,7 @@ namespace RunAndGun.Space
         public GameObject player;
         public GameObject[] playerPrefabs;
         public GameObject[] allLevels;
-        public GameObject currentLevel;
+        public levelBehavior currentLevel;
         public int totalEarnings;
         public GameObject tutorialPanel;
 
@@ -71,10 +71,6 @@ namespace RunAndGun.Space
                 instance = this;
             }
 
-            player = Instantiate(playerPrefabs[PlayerPrefs.GetInt("selectedPlayer", 0)]);
-            FindObjectOfType<CinemachineVirtualCamera>().Follow = player.transform;
-            FindObjectOfType<CinemachineVirtualCamera>().LookAt = player.transform;
-
             //Reset current level if the total levels count exceeds
             if (PlayerPrefs.GetInt("currentLevel", 0) >= allLevels.Length)
             {
@@ -85,7 +81,11 @@ namespace RunAndGun.Space
                 FirebaseAnalytics.LogEvent("All_Levels" + "_Cleared");
             }
 
-            currentLevel = Instantiate(allLevels[PlayerPrefs.GetInt("currentLevel", 0)]);
+            currentLevel = Instantiate(allLevels[PlayerPrefs.GetInt("currentLevel", 0)].GetComponent<levelBehavior>());
+
+            player = Instantiate(playerPrefabs[PlayerPrefs.GetInt("selectedPlayer", 0)], currentLevel.spawnPoint.position, Quaternion.identity);
+            FindObjectOfType<CinemachineVirtualCamera>().Follow = player.transform;
+            FindObjectOfType<CinemachineVirtualCamera>().LookAt = player.transform;
         }
 
         public void claimLevelReward()
@@ -100,7 +100,10 @@ namespace RunAndGun.Space
             EnemyHealthBar_UI = GameObject.FindObjectOfType<EnemyHealthBar_UI>();
             UpdateGameState(StartingState);
 
-            audioManager.instance.PlayAudio("gameplayBGM", false, Vector3.zero);
+            if (audioManager.instance) 
+            {
+                audioManager.instance.PlayAudio("gameplayBGM", false, Vector3.zero);
+            }
 
             if (PlayerPrefs.GetInt("tutorial", 1) == 1)
             {

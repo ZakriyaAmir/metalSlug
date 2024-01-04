@@ -227,7 +227,7 @@ public class mainMenu : MonoBehaviour
             level.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = (i + 1).ToString();
 
         }
-        SnapScrollToTarget(levelsParent.GetChild(selectedLevel).GetComponent<RectTransform>());
+        //SnapScrollToTarget(levelsParent.GetChild(selectedLevel).GetComponent<RectTransform>());
     }
 
     public void SnapScrollToTarget(RectTransform target)

@@ -188,6 +188,7 @@ Transform:
   - {fileID: 3378299825329696548}
   - {fileID: 8243298974975831298}
   - {fileID: 1814739044}
+  - {fileID: 1597861936758054261}
   - {fileID: 4995148483970451306}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
@@ -1798,6 +1799,37 @@ Transform:
   - {fileID: 3274522737528149803}
   m_Father: {fileID: 2474710122162960684}
   m_LocalEulerAnglesHint: {x: 22.743076, y: -39.139816, z: -41.796803}
+--- !u!1 &3900957025371648628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1597861936758054261}
+  m_Layer: 0
+  m_Name: shootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1597861936758054261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900957025371648628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00000013269234, y: -0.000000119209275, z: -0.000000052147186, w: 1}
+  m_LocalPosition: {x: -0, y: 1.8429509, z: 0.27154925}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 962573725745312618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3925621646934747083
 GameObject:
   m_ObjectHideFlags: 0
@@ -3256,8 +3288,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8089305208542429268}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fedcdb126c75bd04ca3c84c986b0c45d, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 79d70d2ae08d5434d9a040f977ac794b, type: 3}
+  m_Controller: {fileID: 9100000, guid: 60abc11b0fc5d0649976e56791a040ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3596,6 +3628,7 @@ MonoBehaviour:
     m_Bits: 512
   projectilePrefab: {fileID: 3142553298119542543, guid: da6f192f9e4b9ca48b86ca23423c1205, type: 3}
   LowShoot: 1
+  shootingPoint: {fileID: 1597861936758054261}
 --- !u!1 &8308923245721385142
 GameObject:
   m_ObjectHideFlags: 0
