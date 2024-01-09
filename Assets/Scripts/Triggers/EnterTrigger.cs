@@ -7,13 +7,23 @@ namespace RunAndGun.Space
     {
         [SerializeField] private LayerMask targetMask;
         [SerializeField] private bool runOnce = false;
-        public UnityEvent triggerEnterEvent;
+        [SerializeField] private bool endTrigger = false;
+        [SerializeField] private bool announcementTrigger = false;
+        [SerializeField] public string announcementText;
         private GameObject uniqueObject = null;
 
         private void OnTriggerEnter(Collider other)
         {
             if ((targetMask.value & (1 << other.transform.gameObject.layer)) > 0)
             {
+                if (announcementTrigger)
+                {
+                    GameManager.instance.AnnounceText(announcementText);
+                }
+                if (endTrigger) 
+                {
+                    GameManager.instance.LevelVictory();
+                }
                 if (uniqueObject == null)
                 {
                     uniqueObject = other.gameObject;
@@ -32,7 +42,7 @@ namespace RunAndGun.Space
 
         private void ActivateTrigger()
         {
-            triggerEnterEvent?.Invoke();
+            //triggerEnterEvent?.Invoke();
             if (runOnce)
             {
                 DisableSelf();

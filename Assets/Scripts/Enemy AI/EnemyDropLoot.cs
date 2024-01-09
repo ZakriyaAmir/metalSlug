@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RunAndGun.Space
@@ -7,12 +8,14 @@ namespace RunAndGun.Space
         [SerializeField] private Transform HealthPickup;
         [SerializeField] private int HealthDropRateMin = 0;
         [SerializeField] private int HealthDropRateMax = 1;
-        [SerializeField] private Transform DNASamplePickUp;
-        [SerializeField] private int DNADropRateMin = 1;
-        [SerializeField] private int DNADropRateMax = 3;
+        [SerializeField] private Transform CoinPickUp;
+        [SerializeField] private int CoinDropRateMin = 1;
+        [SerializeField] private int CoinDropRateMax = 3;
+        [SerializeField] private Transform WeaponPickUp;
+        [SerializeField] private int WeaponDropRateMin = 1;
+        [SerializeField] private int WeaponDropRateMax = 3;
 
-        private Transform[] dropLoot;
-        private Rigidbody[] dropLootRigidBody;
+        public List<Transform> dropLoot;
         private int totalDropLootNumber = 0;
         private EnemyComponentsManager enemyComponentsManager;
 
@@ -21,29 +24,57 @@ namespace RunAndGun.Space
             enemyComponentsManager = GetComponentInParent<EnemyComponentsManager>();
             enemyComponentsManager.OnDeath += OnDeath;
             int healthDropRate = Random.Range(HealthDropRateMin, HealthDropRateMax + 1);
-            int dnaDropRate = Random.Range(DNADropRateMin, DNADropRateMax + 1);
-            totalDropLootNumber = healthDropRate + dnaDropRate;
+            int coinDropRate = Random.Range(CoinDropRateMin, CoinDropRateMax + 1);
+            int weaponDropRate = Random.Range(WeaponDropRateMin, WeaponDropRateMax + 1);
+            int totalCount = 0;
+            if (HealthPickup) 
+            {
+                totalCount++;
+            }
+            if (CoinPickUp)
+            {
+                totalCount++;
+            }
+            if (WeaponPickUp)
+            {
+                totalCount++;
+            }
+
+            totalDropLootNumber = totalCount;
             if (totalDropLootNumber > 0)
             {
-                dropLoot = new Transform[totalDropLootNumber];
-                dropLootRigidBody = new Rigidbody[totalDropLootNumber];
+                //dropLoot = new Transform[totalDropLootNumber];
                 int x = 0;
                 Transform clone = null;
-                for (int i = 0; i < healthDropRate; i++)
+                if (HealthPickup != null)
                 {
-                    clone = Instantiate(HealthPickup, this.transform.position, Quaternion.identity, this.transform);
-                    clone.gameObject.SetActive(false);
-                    dropLoot[x] = clone;
-                    dropLootRigidBody[x] = clone.GetComponent<Rigidbody>();
-                    x++;
+                    for (int i = 0; i < healthDropRate; i++)
+                    {
+                        clone = Instantiate(HealthPickup, this.transform.position, Quaternion.identity, this.transform);
+                        clone.gameObject.SetActive(false);
+                        dropLoot.Add(clone);
+                        x++;
+                    }
                 }
-                for (int i = 0; i < dnaDropRate; i++)
+                if (CoinPickUp != null)
                 {
-                    clone = Instantiate(DNASamplePickUp, this.transform.position, Quaternion.identity, this.transform);
-                    clone.gameObject.SetActive(false);
-                    dropLoot[x] = clone;
-                    dropLootRigidBody[x] = clone.GetComponent<Rigidbody>();
-                    x++;
+                    for (int i = 0; i < coinDropRate; i++)
+                    {
+                        clone = Instantiate(CoinPickUp, this.transform.position, Quaternion.identity, this.transform);
+                        clone.gameObject.SetActive(false);
+                        dropLoot.Add(clone);
+                        x++;
+                    }
+                }
+                if (WeaponPickUp != null)
+                {
+                    for (int i = 0; i < weaponDropRate; i++)
+                    {
+                        clone = Instantiate(WeaponPickUp, this.transform.position, Quaternion.identity, this.transform);
+                        clone.gameObject.SetActive(false);
+                        dropLoot.Add(clone);
+                        x++;
+                    }
                 }
             }
         }
@@ -56,11 +87,11 @@ namespace RunAndGun.Space
         {
             if (totalDropLootNumber > 0)
             {
-                for (int i = 0; i < totalDropLootNumber; i++)
+                foreach (var item in dropLoot) 
                 {
-                    dropLoot[i].parent = null;
-                    dropLoot[i].gameObject.SetActive(true);
-                    dropLootRigidBody[i].velocity = new Vector3(Random.Range(-4f, 4f), Random.Range(2f, 4f), 0);
+                    item.parent = null;
+                    item.gameObject.SetActive(true);
+                    item.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-4f, 4f), Random.Range(2f, 4f), 0);
                 }
             }
         }

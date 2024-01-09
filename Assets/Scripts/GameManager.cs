@@ -59,7 +59,6 @@ namespace RunAndGun.Space
         private void Awake()
         {
             Instance = this;
-            Application.targetFrameRate = 120;
             GlobalBuffer.Reset();
 
             if (instance != null)
@@ -80,8 +79,8 @@ namespace RunAndGun.Space
                 //GA Event
                 FirebaseAnalytics.LogEvent("All_Levels" + "_Cleared");
             }
-
-            currentLevel = Instantiate(allLevels[PlayerPrefs.GetInt("currentLevel", 0)].GetComponent<levelBehavior>());
+            GameObject obj = Instantiate(allLevels[PlayerPrefs.GetInt("currentLevel", 0)]);
+            currentLevel = obj.GetComponent<levelBehavior>();
 
             player = Instantiate(playerPrefabs[PlayerPrefs.GetInt("selectedPlayer", 0)], currentLevel.spawnPoint.position, Quaternion.identity);
             FindObjectOfType<CinemachineVirtualCamera>().Follow = player.transform;
@@ -153,6 +152,7 @@ namespace RunAndGun.Space
                     break;
                 case GameState.LevelVictory:
                     Cursor.visible = true;
+                    Debug.Log("Zak1");
                     GlobalBuffer.CalculateTimeSpent();
                     if (audioManager.instance.vibrationBool)
                     {

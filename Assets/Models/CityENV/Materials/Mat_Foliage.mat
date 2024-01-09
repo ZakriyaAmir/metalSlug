@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Foliage
   m_Shader: {fileID: 4800000, guid: a63d290e1eb09984ab62e4dd70d9d408, type: 3}
   m_ShaderKeywords: 
@@ -72,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5268166, g: 0.60233563, b: 0.6397059, a: 0.909}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.909}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

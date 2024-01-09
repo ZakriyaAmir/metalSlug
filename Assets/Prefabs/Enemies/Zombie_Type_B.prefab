@@ -3446,9 +3446,9 @@ MonoBehaviour:
   HealthPickup: {fileID: 4113892394816815246, guid: 4ff88a6662418cc4ba12cdaf10bed95d, type: 3}
   HealthDropRateMin: 0
   HealthDropRateMax: 1
-  DNASamplePickUp: {fileID: 6250940375494386076, guid: b590948d7e4dadc40b891e4c8861b920, type: 3}
-  DNADropRateMin: 1
-  DNADropRateMax: 3
+  CoinPickUp: {fileID: 6250940375494386076, guid: b590948d7e4dadc40b891e4c8861b920, type: 3}
+  CoinDropRateMin: 1
+  CoinDropRateMax: 3
 --- !u!1 &8446603916934182543
 GameObject:
   m_ObjectHideFlags: 0
