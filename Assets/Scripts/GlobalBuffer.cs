@@ -21,7 +21,6 @@ namespace RunAndGun.Space
         public static void CalculateTimeSpent()
         {
             TimeSpent = DateTime.Now - timer;
-            Debug.Log("Zak2 = " + TimeSpent);
         }
     }
 }

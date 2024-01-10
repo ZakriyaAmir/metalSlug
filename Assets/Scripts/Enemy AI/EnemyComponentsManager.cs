@@ -25,6 +25,8 @@ namespace RunAndGun.Space
         public event Action<EnemySpotState> OnSpotStateChanged;
         public event Action<float> OnTakeDamage;
         public event Action OnDeath;
+        public string enemyDieAudioName;
+        public string enemyAttackAudioName;
 
         private void Awake()
         {
@@ -45,6 +47,13 @@ namespace RunAndGun.Space
 
         public void Die()
         {
+            //Play enemy Death sound
+            if (enemyDieAudioName != null && enemyDieAudioName != "") 
+            {
+                audioManager.instance.PlayAudio(enemyDieAudioName, true, transform.position);
+            }
+            //
+
             OnDeath?.Invoke();
             GlobalBuffer.gamePoints.EnemiesKilled += 1;
             this.gameObject.layer = LayerMask.NameToLayer(GlobalStringVars.PLAYER_PHASE_THROUGH_LAYER);

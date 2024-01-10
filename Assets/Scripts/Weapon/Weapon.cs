@@ -11,7 +11,7 @@ namespace RunAndGun.Space
         [SerializeField] private float bulletSpeed = 300f;
         [SerializeField] private float fireRateInSeconds = 0.2f;
         [SerializeField] private float reloadSpeed = 1f;
-        [SerializeField] private AudioSourceElement ShootAudio;
+        [SerializeField] private string weaponAudioName;
         private RecoilControl recoilControl;
         private Transform[] ammo;
         private SimpleBullet[] bulletRefernce;
@@ -118,10 +118,7 @@ namespace RunAndGun.Space
                 recoilControl.CallRecoil();
                 GlobalBuffer.gamePoints.CurrentAmmoCount = ammoLeft;
                 GameManager.Instance.UpdateAmmo();
-                if (ShootAudio != null)
-                {
-                    ShootAudio.Play();
-                }
+                audioManager.instance.PlayAudio(weaponAudioName, true, transform.position);
             }
         }
 

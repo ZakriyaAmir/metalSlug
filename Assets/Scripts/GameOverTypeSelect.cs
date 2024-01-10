@@ -12,10 +12,12 @@ namespace RunAndGun.Space
         {
             if (GlobalBuffer.failed)
             {
+                audioManager.instance.PlayAudio("fail", true, Vector3.zero);
                 Failed?.Invoke();
             }
             else
             {
+                audioManager.instance.PlayAudio("win", true, Vector3.zero);
                 Success?.Invoke();
             }
 

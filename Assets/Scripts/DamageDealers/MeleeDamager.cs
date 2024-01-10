@@ -13,6 +13,12 @@ namespace RunAndGun.Space
 
         public void InstantiateMeleeDamage()
         {
+            //Play enemy Attack sound
+            if (transform.parent.GetComponent<EnemyComponentsManager>().enemyAttackAudioName != null && transform.parent.GetComponent<EnemyComponentsManager>().enemyAttackAudioName != "")
+            {
+                audioManager.instance.PlayAudio(transform.parent.GetComponent<EnemyComponentsManager>().enemyAttackAudioName, true, transform.position);
+            }
+            //
             Collider[] colliders = Physics.OverlapSphere(this.transform.position, damageDealSphereRadius, targetMask);
             if (colliders.Length > 1)
             {

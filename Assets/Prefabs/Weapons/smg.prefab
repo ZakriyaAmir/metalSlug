@@ -370,7 +370,7 @@ MonoBehaviour:
   bulletSpeed: 50
   fireRateInSeconds: 0.1
   reloadSpeed: 3
-  ShootAudio: {fileID: 7044884549879369015}
+  weaponAudioName: smg
   reloading: 0
   defaultWeapon: 0
   leftHandIk: {fileID: 5783824760060813568}

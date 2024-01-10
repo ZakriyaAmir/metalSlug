@@ -22,6 +22,7 @@ namespace RunAndGun.Space
             taken = true;
             GameManager.Instance.PointsAdded(points);
             Destroy(this.gameObject);
+            audioManager.instance.PlayAudio("coin", true, Vector3.zero);
         }
     }
 }

@@ -152,7 +152,6 @@ namespace RunAndGun.Space
                     break;
                 case GameState.LevelVictory:
                     Cursor.visible = true;
-                    Debug.Log("Zak1");
                     GlobalBuffer.CalculateTimeSpent();
                     if (audioManager.instance.vibrationBool)
                     {

@@ -29,6 +29,7 @@ namespace RunAndGun.Space
         public void TakeDamage(float damagePoints)
         {
             GameManager.Instance.PlayerHealthPointsAdded(-damagePoints);
+            audioManager.instance.PlayAudio("playerHurt", true, transform.position);
         }
 
         private void OnHealthPointsAdded(float addedHealthPoints)
@@ -47,6 +48,10 @@ namespace RunAndGun.Space
         private void OnPlayerDeath()
         {
             isDead = true;  // mark as dead in current class
+            audioManager.instance.PlayAudio("playerDie", true, transform.position);
+
+            //Disable player collider
+            GetComponent<SphereCollider>().enabled = false;
         }
         private void TestPlayeDeath()
         {

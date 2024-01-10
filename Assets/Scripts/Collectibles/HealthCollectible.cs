@@ -19,6 +19,7 @@ namespace RunAndGun.Space
                 if(picker != null)
                 {
                     Heal();
+                    audioManager.instance.PlayAudio("heal", true, Vector3.zero);
                 }
             }
         }

@@ -25,6 +25,12 @@ namespace RunAndGun.Space
 
         public void ShootAtTarget()
         {
+            //Play enemy Attack sound
+            if (transform.parent.GetComponent<EnemyComponentsManager>().enemyAttackAudioName != null && transform.parent.GetComponent<EnemyComponentsManager>().enemyAttackAudioName != "")
+            {
+                audioManager.instance.PlayAudio(transform.parent.GetComponent<EnemyComponentsManager>().enemyAttackAudioName, true, transform.position);
+            }
+            //
             Transform _projectile = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
             if (isBullet)
             {
