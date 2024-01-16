@@ -6395,6 +6395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1864510075710098419, guid: 57cf88f9be5ff204fac15f34554d709c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89c08a8efbdb0624aab8924a3ec90624, type: 3}
     - target: {fileID: 2245599990514604649, guid: 57cf88f9be5ff204fac15f34554d709c, type: 3}
       propertyPath: m_TagString
       value: Button
@@ -6434,6 +6438,18 @@ PrefabInstance:
     - target: {fileID: 4778332342641672122, guid: 57cf88f9be5ff204fac15f34554d709c, type: 3}
       propertyPath: m_TagString
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085399496904461093, guid: 57cf88f9be5ff204fac15f34554d709c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1293.3313
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085399496904461093, guid: 57cf88f9be5ff204fac15f34554d709c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000043839
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085399496904461093, guid: 57cf88f9be5ff204fac15f34554d709c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5500923700045399227, guid: 57cf88f9be5ff204fac15f34554d709c, type: 3}
       propertyPath: m_text
@@ -6482,7 +6498,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3184649019845934487, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
       propertyPath: audioFiles.Array.size
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 3184649019845934487, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
       propertyPath: audioFiles.Array.data[5].name
@@ -6569,6 +6585,10 @@ PrefabInstance:
       value: coin
       objectReference: {fileID: 0}
     - target: {fileID: 3184649019845934487, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
+      propertyPath: audioFiles.Array.data[25].name
+      value: rocketHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184649019845934487, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
       propertyPath: audioFiles.Array.data[2].sound
       value: 
       objectReference: {fileID: 8300000, guid: 775a867fcc895074d8426e560f28a2f1, type: 3}
@@ -6603,7 +6623,7 @@ PrefabInstance:
     - target: {fileID: 3184649019845934487, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
       propertyPath: audioFiles.Array.data[10].sound
       value: 
-      objectReference: {fileID: 8300000, guid: 4bce89fee77f4c44e90488efb0e92c13, type: 3}
+      objectReference: {fileID: 8300000, guid: ac93e8a9caad61346b1bed7ebdb106bf, type: 3}
     - target: {fileID: 3184649019845934487, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
       propertyPath: audioFiles.Array.data[11].sound
       value: 
@@ -6660,6 +6680,10 @@ PrefabInstance:
       propertyPath: audioFiles.Array.data[24].sound
       value: 
       objectReference: {fileID: 8300000, guid: 139fefc05e56b7d4bb5a57f068f4a394, type: 3}
+    - target: {fileID: 3184649019845934487, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
+      propertyPath: audioFiles.Array.data[25].sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d3f095a7044a2847bc2b037e6e7ca5c, type: 3}
     - target: {fileID: 3320423357105412330, guid: 7606ea171468fcc438545e1c0c50d737, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.55

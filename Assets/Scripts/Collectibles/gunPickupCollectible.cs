@@ -19,6 +19,9 @@ namespace RunAndGun.Space
 
         private void GiveGun(PlayerMovement player)
         {
+            //Play weapon pickup sound
+            audioManager.instance.PlayAudio("pickWeapon", true, transform.position);
+            
             taken = true;
             foreach (Transform gun in player.gunsParent) 
             {

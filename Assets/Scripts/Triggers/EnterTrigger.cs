@@ -20,8 +20,19 @@ namespace RunAndGun.Space
                 {
                     GameManager.instance.AnnounceText(announcementText);
                 }
+
                 if (endTrigger) 
                 {
+                    EnemyComponentsManager[] enemyList = FindObjectsOfType<EnemyComponentsManager>();
+                    foreach (EnemyComponentsManager enemy in enemyList)
+                    {
+                        if (!enemy.died)
+                        {
+                            GameManager.instance.AnnounceText("Kill All Enemies First Then Come Here!");
+                            return;
+                        }
+                    }
+                    GameManager.instance.AnnounceText("Level Cleared!");
                     GameManager.instance.LevelVictory();
                 }
                 if (uniqueObject == null)

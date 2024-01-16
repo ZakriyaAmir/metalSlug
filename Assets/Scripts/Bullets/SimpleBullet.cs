@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Net.Sockets;
 using UnityEngine;
 
 namespace RunAndGun.Space
@@ -18,6 +20,9 @@ namespace RunAndGun.Space
         private Vector3 originalPosition;
         private float disappearTimer;
         private IDamagable damagable;
+        public bool impactEffect;
+        public string impactSound;
+        public GameObject impactParticle;
 
         private void Start()
         {
@@ -43,6 +48,11 @@ namespace RunAndGun.Space
         public void SendBullet(Vector3 direction, float speed)
         {
             Appear();
+            //Set bullet's appearance direction
+            if (direction.normalized.x < 0) 
+            {
+                transform.rotation = new Quaternion(0,180,0,0);
+            }
             rbody.velocity = direction * speed;
         }
 
@@ -67,18 +77,51 @@ namespace RunAndGun.Space
 
         private void OnTriggerEnter(Collider other)
         {
-            if(activeBullet)
+            if (activeBullet)
             {
                 if ((targetMask.value & (1 << other.transform.gameObject.layer)) > 0)
                 {
                     TryDealDamage(other);
+                    treatImpact(other.transform);
                     Disappear();
                 }
                 if ((obstructionMask.value & (1 << other.transform.gameObject.layer)) > 0)
                 {
+                    treatImpact(other.transform);
                     Disappear();
                 }
             }
+        }
+
+        void treatImpact(Transform other)
+        {
+            if (impactEffect)
+            {
+                audioManager.instance.PlayAudio(impactSound, true, transform.position);
+                if (impactParticle != null)
+                {
+                    GameObject imp = Instantiate(impactParticle, transform.position, Quaternion.identity);
+                    StartCoroutine(blastAnimation(imp.transform));
+                }
+            }
+        }
+
+        IEnumerator blastAnimation(Transform trans) 
+        {
+            trans.gameObject.SetActive(true);
+            float lerpDuration = 0.5f;
+            float elapsedTime = 0f;
+            Vector3 startScale = new Vector3(0, 0, 0);
+            Vector3 targetScale = new Vector3(2,2,2);
+
+            while (elapsedTime < lerpDuration)
+            {
+                trans.localScale = Vector3.Lerp(startScale, targetScale, elapsedTime / lerpDuration);
+                elapsedTime += Time.deltaTime;
+
+                yield return null; // Wait for the next frame
+            }
+            Destroy(trans.gameObject);
         }
 
         private void TryDealDamage(Collider other)
