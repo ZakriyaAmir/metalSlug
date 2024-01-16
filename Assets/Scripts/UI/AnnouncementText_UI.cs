@@ -30,7 +30,6 @@ namespace RunAndGun.Space
             if (announceDurationTimer > 0)
             {
                 announceDurationTimer -= Time.deltaTime;
-
             }
             else if (announceDurationTimer < 0)
             {

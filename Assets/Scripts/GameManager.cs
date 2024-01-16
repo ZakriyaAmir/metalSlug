@@ -87,13 +87,6 @@ namespace RunAndGun.Space
             FindObjectOfType<CinemachineVirtualCamera>().LookAt = player.transform;
         }
 
-        public void claimLevelReward()
-        {
-            economyManager.Instance.addMoney(totalEarnings);
-            //GA Event
-            FirebaseAnalytics.LogEvent("Level_Reward_" + totalEarnings);
-        }
-
         private void Start()
         {
             EnemyHealthBar_UI = GameObject.FindObjectOfType<EnemyHealthBar_UI>();

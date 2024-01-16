@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,9 @@ namespace RunAndGun.Space
         [SerializeField] private Slider SoundsVolumeSlider;
         public List<AudioSourceElement> MusicSource;
         public List<AudioSourceElement> AudioEffectsSource;
+
+        public GameObject loadingPanel;
+
         private void Awake()
         {
             if (GameManager.Instance != null)
@@ -41,7 +45,30 @@ namespace RunAndGun.Space
 
         public void GoToMainMenuButtonPress()
         {
-            SceneManager.LoadScene(0);
+            showLoading();
+            StartCoroutine(delayLoadScene("mainMenu"));
+
+            AdsManager.Instance.RunInterstitialAd();
+        }
+
+        public void playNextLevel()
+        {
+            showLoading();
+            PlayerPrefs.SetInt("currentLevel", PlayerPrefs.GetInt("currentLevel", 0) + 1);
+            StartCoroutine(delayLoadScene("gameplay"));
+
+            AdsManager.Instance.RunInterstitialAd();
+        }
+
+        public IEnumerator delayLoadScene(string scene)
+        {
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(scene);
+        }
+
+        public void showLoading()
+        {
+            Instantiate(loadingPanel);
         }
 
         public void LoadGivenScene(int index)
@@ -51,7 +78,10 @@ namespace RunAndGun.Space
 
         public void RestartButtonPress()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            showLoading();
+            StartCoroutine(delayLoadScene("gameplay"));
+
+            AdsManager.Instance.RunInterstitialAd();
         }
 
         private void OnGameStateChanged(GameState state)
