@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace RunAndGun.Space
 {
@@ -7,10 +8,18 @@ namespace RunAndGun.Space
     {
         [SerializeField] private GameResultValueType valueType;
         private TMP_Text text;
+        private Image img;
 
         private void Start()
         {
-            text = GetComponent<TMP_Text>();
+            if (valueType == GameResultValueType.CurrentHealthPoints)
+            {
+                img = GetComponent<Image>();
+            }
+            else 
+            {
+                text = GetComponent<TMP_Text>();
+            }
             ManageSubscription();
         }
 
@@ -64,7 +73,14 @@ namespace RunAndGun.Space
                 default:
                     break;
             }
-            text.text = ((int)Mathf.Clamp(value, 0, 9999f)).ToString();
+            if (valueType == GameResultValueType.CurrentHealthPoints)
+            {
+                img.fillAmount = ((float)Mathf.Clamp(value, 0, 100f)) / 100;
+            }
+            else
+            {
+                text.text = ((int)Mathf.Clamp(value, 0, 9999f)).ToString();
+            }
         }
     }
 }

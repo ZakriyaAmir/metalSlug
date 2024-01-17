@@ -53,6 +53,7 @@ namespace RunAndGun.Space
 
         // reference to selected enemy
         public EnemyHealthBar_UI EnemyHealthBar_UI;
+        public GameObject AnnouncementText;
 
         public static GameManager instance;
 
@@ -220,6 +221,10 @@ namespace RunAndGun.Space
 
         public void AnnounceText(string text)
         {
+            audioManager.instance.PlayAudio("notification", true, Vector3.zero);
+
+            AnnouncementText.SetActive(false);
+            AnnouncementText.SetActive(true);
             Instance.OnAnnounce?.Invoke(text);
         }
 

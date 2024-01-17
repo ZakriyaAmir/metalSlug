@@ -36,7 +36,7 @@ public class mainMenu : MonoBehaviour
             consentPanel.SetActive(true);
         }
 
-        //PlayerPrefs.SetInt("levelsCompleted", 50);
+        //PlayerPrefs.SetInt("levelsCompleted", 10);
     }
 
     public void acceptConsent() 
@@ -115,12 +115,13 @@ public class mainMenu : MonoBehaviour
 
     public void changeSelectedLevel(int levelIndex)
     {
-        foreach (Transform level in levelsParent)
+        /*foreach (Transform level in levelsParent)
         {
             level.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
-        }
+        }*/
         selectedLevel = levelIndex;
-        levelsParent.GetChild(levelIndex).GetChild(0).GetChild(1).gameObject.SetActive(true);
+        playLevel();
+        //levelsParent.GetChild(levelIndex).GetChild(0).GetChild(1).gameObject.SetActive(true);
     }
 
     public void checkVibration() 
@@ -192,7 +193,7 @@ public class mainMenu : MonoBehaviour
 
     public void checklevels()
     {
-        if (PlayerPrefs.GetInt("levelsCompleted", 0) < maxLevels)
+        if (PlayerPrefs.GetInt("levelsCompleted", 0) <= maxLevels)
         {
             selectedLevel = PlayerPrefs.GetInt("levelsCompleted", 0);
         }
@@ -206,25 +207,31 @@ public class mainMenu : MonoBehaviour
             GameObject level = Instantiate(levelPrefab, levelsParent);
             level.GetComponent<levelUIScript>().levelID = i;
 
+            if (i == 0) 
+            {
+                level.transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
+                continue;
+            }
+
             if (selectedLevel > i)
             {
-                level.transform.GetChild(0).GetComponent<Button>().enabled = true;
-                level.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-                level.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+                level.transform.GetChild(0).GetComponent<Button>().interactable = true;
+                //level.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                level.transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
             }
-            else if (selectedLevel == i) 
+            /*else if (selectedLevel == i) 
             {
                 level.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
-            }
+            }*/
             else
             {
-                level.transform.GetChild(0).GetComponent<Button>().enabled = false;
-                level.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-                level.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+                level.transform.GetChild(0).GetComponent<Button>().interactable = false;
+                //level.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+                level.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
             }
 
             //Assign levels UI a number
-            level.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = (i + 1).ToString();
+            level.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (i + 1).ToString();
 
         }
         //SnapScrollToTarget(levelsParent.GetChild(selectedLevel).GetComponent<RectTransform>());
@@ -234,10 +241,10 @@ public class mainMenu : MonoBehaviour
     {
         Canvas.ForceUpdateCanvases();
 
-        var y =
+        var x =
                 (Vector2)levelsParent.parent.parent.transform.InverseTransformPoint(levelsParent.GetComponent<RectTransform>().position)
                 - (Vector2)levelsParent.parent.parent.transform.InverseTransformPoint(target.position);
 
-        levelsParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(levelsParent.GetComponent<RectTransform>().anchoredPosition.x, y.y - 2000);
+        levelsParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(x.x - 2000, levelsParent.GetComponent<RectTransform>().anchoredPosition.y);
     }
 }

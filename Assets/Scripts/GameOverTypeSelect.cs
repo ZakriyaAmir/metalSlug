@@ -11,11 +11,17 @@ namespace RunAndGun.Space
 
         public GameObject multiplierWheel;
         public GameObject navigationButtons;
+        public GameObject leftPanel;
+        public GameObject CenteredPanel;
+        public GameObject NextLevelButton;
 
         private void Start()
         {
             navigationButtons.SetActive(false);
             multiplierWheel.SetActive(false);
+            CenteredPanel.SetActive(false);
+            leftPanel.SetActive(false);
+            NextLevelButton.SetActive(false);
 
             if (GlobalBuffer.failed)
             {
@@ -49,11 +55,17 @@ namespace RunAndGun.Space
         public void showWin()
         {
             multiplierWheel.SetActive(true);
+            CenteredPanel.SetActive(false);
+            leftPanel.SetActive(true);
+            NextLevelButton.SetActive(true);
         }
-        
+
         public void showLose()
         {
             navigationButtons.SetActive(true);
+            CenteredPanel.SetActive(true);
+            leftPanel.SetActive(false);
+            NextLevelButton.SetActive(false);
         }
 
         public void claimLevelReward()

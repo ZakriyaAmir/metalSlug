@@ -80,12 +80,12 @@ public class gaugueBehavior : MonoBehaviour
     public void grantReward() 
     {
         skipBtn.gameObject.SetActive(false);
+        claimBtn.gameObject.SetActive(false);
         Debug.Log("Reward Granted");
         audioManager.instance.PlayAudio("win2", true, Vector3.zero);
         GameManager.instance.totalEarnings = finalAmount;
         coinsText.text = finalAmount.ToString();
         gaugeAnim.enabled = false;
-        claimBtn.interactable = false;
         claimLevelReward(finalAmount);
         //GA Event
         FirebaseAnalytics.LogEvent("Level_Reward_Multiplier_" + rewardMultiplier);
