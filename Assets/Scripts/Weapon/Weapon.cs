@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RunAndGun.Space
 {
@@ -84,7 +87,6 @@ namespace RunAndGun.Space
 
         public void TryShoot()
         {
-            Debug.Log("Shot a fire");
             if (infiniteAmmo)
             {
                 if (ammoLeft <= 0)

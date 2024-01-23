@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDieAudioName: shootDie
   enemyAttackAudioName: shootAttack
+  died: 0
 --- !u!136 &436971315872410066
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -225,9 +226,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 120
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &436971315872410076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,43 +3397,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.056
+      value: -0.041
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.186
+      value: 0.162
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.004
+      value: 0.018
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.36915016
+      value: 0.3601419
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.40481156
+      value: -0.7224821
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.60741585
+      value: 0.5877228
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5752406
+      value: -0.053845253
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 23.575
+      value: -27.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 94.108
+      value: 145.706
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -89.347
+      value: -93.207
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d99d809b0256f2b479111de87ca38501, type: 3}
       propertyPath: m_Name

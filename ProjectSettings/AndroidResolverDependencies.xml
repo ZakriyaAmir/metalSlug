@@ -2,6 +2,8 @@
   <packages>
     <package>androidx.lifecycle:lifecycle-common-java8:2.4.1</package>
     <package>androidx.lifecycle:lifecycle-process:2.4.1</package>
+    <package>com.applovin.mediation:facebook-adapter:[6.16.0.2]</package>
+    <package>com.applovin.mediation:unityads-adapter:4.9.2.1</package>
     <package>com.applovin:applovin-sdk:11.11.3</package>
     <package>com.google.android.gms:play-services-ads:21.3.0</package>
     <package>com.google.android.gms:play-services-base:18.1.0</package>

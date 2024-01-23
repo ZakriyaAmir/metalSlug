@@ -244,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 1516470076652781282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.331, y: -0.26, z: 0.008}
+  m_LocalPosition: {x: -0.756, y: -0.26, z: 0.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +304,7 @@ MonoBehaviour:
   ammoCapacity: 45
   bulletPrefab: {fileID: 2151528923792191995, guid: e303163c6bf47e34aaa49f31a3048e39, type: 3}
   infiniteAmmo: 1
-  bulletSpeed: 50
+  bulletSpeed: 30
   fireRateInSeconds: 0.25
   reloadSpeed: 1
   weaponAudioName: 9mm

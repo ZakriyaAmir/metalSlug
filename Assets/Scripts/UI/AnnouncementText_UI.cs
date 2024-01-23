@@ -39,7 +39,6 @@ namespace RunAndGun.Space
 
         private void HideText()
         {
-            Debug.Log("Zak2");
             textMeshProUGUI.enabled = false;
         }
     }

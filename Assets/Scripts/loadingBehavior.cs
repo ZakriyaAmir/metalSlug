@@ -33,28 +33,7 @@ public class loadingBehavior : MonoBehaviour
 
     IEnumerator FillLoadingBar()
     {
-        float timer = 0f;
-        float fillDuration = 3f;
-        float startFill = 0;
-        float endFill = 1f; // 100% fill
-        loadingBar.fillAmount = startFill;
-        yield return new WaitForSeconds(2f);
-
-        while (timer < fillDuration)
-        {
-            timer += Time.deltaTime;
-            loadingBar.fillAmount = Mathf.Lerp(startFill, endFill, timer / fillDuration);
-            if (fishIco.localPosition.x < 625) 
-            {
-                float xVal = Mathf.Lerp(0, 625, timer / fillDuration);
-                fishIco.anchoredPosition = new Vector2(xVal, fishIco.anchoredPosition.y);
-            }
-            yield return null;
-        }
-
-        // Ensure the loading bar is fully filled
-        loadingBar.fillAmount = endFill;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
 
         hideLoadingBar();
 

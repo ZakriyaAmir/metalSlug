@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace RunAndGun.Space
 {
-    [RequireComponent(typeof(SphereCollider))]
     public class SimpleBullet : MonoBehaviour, IDamager
     {
         [SerializeField] private LayerMask targetMask;
@@ -33,7 +32,7 @@ namespace RunAndGun.Space
             Disappear();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if(disappearTimer > 0)
             {
@@ -48,12 +47,13 @@ namespace RunAndGun.Space
         public void SendBullet(Vector3 direction, float speed)
         {
             Appear();
+            rbody.velocity = direction * speed;
+
             //Set bullet's appearance direction
             if (direction.normalized.x < 0) 
             {
                 transform.rotation = new Quaternion(0,180,0,0);
             }
-            rbody.velocity = direction * speed;
         }
 
         private void Appear()

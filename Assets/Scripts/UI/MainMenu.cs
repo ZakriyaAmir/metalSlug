@@ -8,11 +8,6 @@ namespace RunAndGun.Space
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField] private Slider MusicVolumeSlider;
-        [SerializeField] private Slider SoundsVolumeSlider;
-        public List<AudioSourceElement> MusicSource;
-        public List<AudioSourceElement> AudioEffectsSource;
-
         public GameObject loadingPanel;
 
         private void Awake()
@@ -22,15 +17,15 @@ namespace RunAndGun.Space
                 GameManager.Instance.OnGameStateChanged.AddListener(OnGameStateChanged);
             }
             Cursor.visible = true;
-            
+
         }
 
         private void Start()
         {
-            MusicVolumeSlider.value = GlobalBuffer.MusicVolume;
-            UpdateMusicVolumeSlider();
-            SoundsVolumeSlider.value = GlobalBuffer.SoundVolume;
-            UpdateSoundsVolumeSlider();
+            /* MusicVolumeSlider.value = GlobalBuffer.MusicVolume;
+             UpdateMusicVolumeSlider();
+             SoundsVolumeSlider.value = GlobalBuffer.SoundVolume;
+             UpdateSoundsVolumeSlider();*/
         }
 
         public void PauseGameButtonPress()
@@ -93,11 +88,9 @@ namespace RunAndGun.Space
                     break;
                 case GameState.InGamePaused:
                     PauseGame();
-                    PauseAllSounds();
                     break;
                 case GameState.InGameActive:
                     ResumeGame();
-                    ResumeAllSounds();
                     break;
                 case GameState.PlayerDead:
 
@@ -125,43 +118,9 @@ namespace RunAndGun.Space
             }
         }
 
-        private void PauseAllSounds()
-        {
-            foreach (AudioSourceElement item in AudioEffectsSource)
-            {
-                item.Pause();
-            }
-        }
-
-        private void ResumeAllSounds()
-        {
-            foreach (AudioSourceElement item in AudioEffectsSource)
-            {
-                item.Unpause();
-            }
-        }
-
         public void QuitGame()
         {
             Application.Quit();
-        }
-
-        public void UpdateMusicVolumeSlider()
-        {
-            GlobalBuffer.MusicVolume = MusicVolumeSlider.value;
-            foreach (AudioSourceElement item in MusicSource)
-            {
-                item.Volume = MusicVolumeSlider.value;
-            }
-        }
-
-        public void UpdateSoundsVolumeSlider()
-        {
-            GlobalBuffer.SoundVolume = SoundsVolumeSlider.value;
-            foreach (AudioSourceElement item in AudioEffectsSource)
-            {
-                item.Volume = SoundsVolumeSlider.value;
-            }
         }
     }
 }

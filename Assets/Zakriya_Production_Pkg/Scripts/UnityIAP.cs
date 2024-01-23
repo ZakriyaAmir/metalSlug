@@ -322,7 +322,7 @@ public class UnityIAP : MonoBehaviour, IStoreListener
 
             
             PlayerPrefs.SetInt("noAds", 1);
-            PlayerPrefs.SetInt("levelsCompleted", 50);
+            PlayerPrefs.SetInt("levelsCompleted", 10);
             mainMenu.Instance.clearLevels();
             mainMenu.Instance.checklevels();
 

@@ -72,6 +72,7 @@ namespace RunAndGun.Space
             }
 
             //Reset current level if the total levels count exceeds
+            Debug.Log("Zak = " + PlayerPrefs.GetInt("currentLevel", 0) + " | " + allLevels.Length);
             if (PlayerPrefs.GetInt("currentLevel", 0) >= allLevels.Length)
             {
                 Debug.Log("Levels Reset");
