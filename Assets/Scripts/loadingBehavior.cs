@@ -7,7 +7,6 @@ public class loadingBehavior : MonoBehaviour
 {
     public Animator anim;
     public Image loadingBar;
-    public RectTransform fishIco;
 
     private void Awake()
     {

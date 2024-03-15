@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "972234405970",
+    "project_id": "metal-gun-strike",
+    "storage_bucket": "metal-gun-strike.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972234405970:android:ca1666b149dafa5861478b",
+        "android_client_info": {
+          "package_name": "com.gamytune.metal.gun.strike.shooting.games"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK6nXghp5ri5ceRhqn-ljDvudiMUuvUts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

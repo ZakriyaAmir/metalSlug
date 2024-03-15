@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7058839993082212358}
-  ammoCapacity: 45
+  ammoCapacity: 5
   bulletPrefab: {fileID: 2151528923792191995, guid: e303163c6bf47e34aaa49f31a3048e39, type: 3}
   infiniteAmmo: 1
   bulletSpeed: 30

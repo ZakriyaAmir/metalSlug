@@ -54,6 +54,7 @@ namespace RunAndGun.Space
                 audioManager.instance.PlayAudio(enemyDieAudioName, true, transform.position);
             }
             //
+            _rigidbody.isKinematic = true;
             died = true;
             OnDeath?.Invoke();
             GlobalBuffer.gamePoints.EnemiesKilled += 1;

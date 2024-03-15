@@ -1,0 +1,14 @@
+KeyStore -- Info
+KeyStore path Password: 909Nd38eVa6
+
+key alias: metalgunstrike
+key password: 909Nd38eVa6
+
+
+App ID - ca-app-pub-2150490078947114~3830786377
+----------
+Interstitial ID - ca-app-pub-2150490078947114/7498568647
+----------
+Banner ID - ca-app-pub-2150490078947114/2517704707
+----------
+Rewarded ID - ca-app-pub-2150490078947114/2474893552

@@ -28,6 +28,7 @@ namespace RunAndGun.Space
                 if (!gun.GetComponent<Weapon>().defaultWeapon)
                 {
                     //Destroy every gun except the pistol
+                    StartCoroutine(gun.GetComponent<Weapon>().destroyAmmo());
                     Destroy(gun.gameObject);
                 }
                 else 

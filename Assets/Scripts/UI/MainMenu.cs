@@ -40,6 +40,7 @@ namespace RunAndGun.Space
 
         public void GoToMainMenuButtonPress()
         {
+            Time.timeScale = 1f;
             showLoading();
             StartCoroutine(delayLoadScene("mainMenu"));
 
@@ -73,6 +74,7 @@ namespace RunAndGun.Space
 
         public void RestartButtonPress()
         {
+            Time.timeScale += 1f;
             showLoading();
             StartCoroutine(delayLoadScene("gameplay"));
 

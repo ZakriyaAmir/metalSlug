@@ -221,8 +221,8 @@ MonoBehaviour:
   ammoCapacity: 50
   bulletPrefab: {fileID: 2151528923792191995, guid: f68053336e397a642bff4db8d24ab4b1, type: 3}
   infiniteAmmo: 0
-  bulletSpeed: 15
-  fireRateInSeconds: 0.2
+  bulletSpeed: 20
+  fireRateInSeconds: 0.3
   reloadSpeed: 5
   weaponAudioName: rocket
   reloading: 0

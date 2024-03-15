@@ -38,7 +38,7 @@ namespace RunAndGun.Space
             {
                 Success?.Invoke();
                 //Save win progress
-                if (PlayerPrefs.GetInt("levelsCompleted", 0) <= PlayerPrefs.GetInt("currentLevel", 0))
+                if (PlayerPrefs.GetInt("levelsCompleted", 0) <= PlayerPrefs.GetInt("currentLevel", 0) + 1)
                 {
                     PlayerPrefs.SetInt("levelsCompleted", PlayerPrefs.GetInt("levelsCompleted", 0) + 1);
                 }

@@ -75,6 +75,51 @@ public class audioManager : MonoBehaviour
         }
     }
 
+    //For 3D ambience sound
+    public void PlayAudio(string soundName, bool destroyable, Vector3 spawnPosition, Transform parent, bool BGM)
+    {
+        // Find the AudioFile with the specified name in the list
+        if (!soundBool)
+        {
+            return;
+        }
+
+        audioFile audio = audioFiles.Find(file => file.name == soundName);
+        GameObject audioObj = null;
+        //Spawn an audio object prefab
+        if (parent == null)
+        {
+            audioObj = Instantiate(audioPrefab, transform);
+        }
+        else
+        {
+            audioObj = Instantiate(audioPrefab, parent);
+        }
+        audioObj.GetComponent<audioSourceBehavior>().destroyOnComplete = destroyable;
+        audioObj.GetComponent<AudioSource>().spatialBlend = 1;
+
+        //Only play one music playback at a time
+        if (BGM)
+        {
+            if (CurrentMusicObject != null)
+            {
+                Destroy(CurrentMusicObject);
+            }
+            CurrentMusicObject = audioObj;
+        }
+
+        audioObj.GetComponent<audioSourceBehavior>().spawnTarget = spawnPosition;
+
+        if (audio != null)
+        {
+            audioObj.GetComponent<audioSourceBehavior>().clip = audio.sound;
+        }
+        else
+        {
+            Debug.LogError($"AudioFile with name {soundName} not found.");
+        }
+    }
+
     public void checkVibration()
     {
         if (PlayerPrefs.GetInt("vibration", 1) == 1)

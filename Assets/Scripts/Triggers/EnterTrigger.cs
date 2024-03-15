@@ -23,7 +23,7 @@ namespace RunAndGun.Space
 
                 if (endTrigger) 
                 {
-                    EnemyComponentsManager[] enemyList = FindObjectsOfType<EnemyComponentsManager>();
+                    /*EnemyComponentsManager[] enemyList = FindObjectsOfType<EnemyComponentsManager>();
                     foreach (EnemyComponentsManager enemy in enemyList)
                     {
                         if (!enemy.died)
@@ -31,7 +31,7 @@ namespace RunAndGun.Space
                             GameManager.instance.AnnounceText("Kill All Enemies First Then Come Here!");
                             return;
                         }
-                    }
+                    }*/
                     GameManager.instance.AnnounceText("Level Cleared!");
                     GameManager.instance.LevelVictory();
                 }

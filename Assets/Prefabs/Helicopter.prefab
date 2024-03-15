@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6080406713663425726}
   - component: {fileID: 1552354618529890987}
   - component: {fileID: 2346297346079247187}
+  - component: {fileID: 8270821455589782750}
   m_Layer: 6
   m_Name: Helicopter
   m_TagString: Untagged
@@ -115,6 +116,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2079856207504974386, guid: 5d09b72823bd47740b69a11daec0b71f, type: 3}
+--- !u!114 &8270821455589782750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222768926009372126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f33a7532eeee5a42821cc1cc72bbc8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioName: helicopter
 --- !u!1 &4648703090822425827
 GameObject:
   m_ObjectHideFlags: 0

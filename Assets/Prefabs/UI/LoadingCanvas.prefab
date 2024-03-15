@@ -373,9 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ded53c746544654d8ffbaaddbb57ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  loadingBar: {fileID: 0}
-  fishIco: {fileID: 0}
+  anim: {fileID: 8101312078930351086}
+  loadingBar: {fileID: 2577112538792974027}
 --- !u!1 &2814621517199587339
 GameObject:
   m_ObjectHideFlags: 0

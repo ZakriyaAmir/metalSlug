@@ -50,7 +50,7 @@ namespace RunAndGun.Space
             ammoLeft = ammoCapacity;
             GlobalBuffer.gamePoints.CurrentAmmoCount = ammoLeft;
             recoilControl = GameManager.Instance.recoilControl;
-            InstantiateAmmoCapacity();
+            StartCoroutine(InstantiateAmmoCapacity());
             if (defaultWeapon)
             {
                 GameManager.Instance.defaultWeapon = this;
@@ -73,7 +73,7 @@ namespace RunAndGun.Space
             }
         }
 
-        private void InstantiateAmmoCapacity()
+        private IEnumerator InstantiateAmmoCapacity()
         {
             ammo = new Transform[ammoCapacity];
             bulletRefernce = new SimpleBullet[ammoCapacity];
@@ -83,6 +83,7 @@ namespace RunAndGun.Space
                 ammo[i] = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
                 bulletRefernce[i] = ammo[i].GetComponent<SimpleBullet>();
             }
+            yield return null;
         }
 
         public void TryShoot()
@@ -130,8 +131,18 @@ namespace RunAndGun.Space
             {
                 Debug.Log("Select Default Gun");
                 GameManager.Instance.selectDefaultWeapon();
+                StartCoroutine(destroyAmmo());
                 Destroy(gameObject);
             }
+        }
+
+        public IEnumerator destroyAmmo() 
+        {
+            foreach (Transform arm in ammo) 
+            {
+                Destroy(arm.gameObject);
+            }
+            yield return null;
         }
 
         private void ReloadWeaponEnd()

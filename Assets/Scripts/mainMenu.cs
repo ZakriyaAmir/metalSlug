@@ -31,9 +31,13 @@ public class mainMenu : MonoBehaviour
         Application.targetFrameRate = 120;
         mainPanel.SetActive(true);
 
-        if (PlayerPrefs.GetInt("consent", 0) == 0) 
+        if (PlayerPrefs.GetInt("consent", 0) == 0)
         {
             consentPanel.SetActive(true);
+        }
+        else 
+        {
+            AdsManager.Instance.Invoke("RunBannerAd", 4f);
         }
 
         //PlayerPrefs.SetInt("levelsCompleted", 10);
@@ -43,6 +47,8 @@ public class mainMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt("consent", 1);
         consentPanel.SetActive(false);
+
+        AdsManager.Instance.Invoke("RunBannerAd", 4f);
     }
 
     public void rejectConsent()
@@ -59,8 +65,6 @@ public class mainMenu : MonoBehaviour
         checklevels();
         updateMoney();
         audioManager.instance.PlayAudio("menuBGM", false, Vector3.zero);
-
-        AdsManager.Instance.Invoke("RunBannerAd", 4f);
     }
 
     public void clearLevels() 
@@ -115,13 +119,12 @@ public class mainMenu : MonoBehaviour
 
     public void changeSelectedLevel(int levelIndex)
     {
-        /*foreach (Transform level in levelsParent)
+        foreach (Transform level in levelsParent)
         {
-            level.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
-        }*/
+            level.GetChild(0).GetComponent<Button>().enabled = false;
+        }
         selectedLevel = levelIndex;
         playLevel();
-        //levelsParent.GetChild(levelIndex).GetChild(0).GetChild(1).gameObject.SetActive(true);
     }
 
     public void checkVibration() 
@@ -213,7 +216,8 @@ public class mainMenu : MonoBehaviour
                 continue;
             }
 
-            if (selectedLevel > i)
+
+            if (selectedLevel >= i)
             {
                 level.transform.GetChild(0).GetComponent<Button>().interactable = true;
                 //level.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);

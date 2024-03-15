@@ -72,7 +72,6 @@ namespace RunAndGun.Space
             }
 
             //Reset current level if the total levels count exceeds
-            Debug.Log("Zak = " + PlayerPrefs.GetInt("currentLevel", 0) + " | " + allLevels.Length);
             if (PlayerPrefs.GetInt("currentLevel", 0) >= allLevels.Length)
             {
                 Debug.Log("Levels Reset");
@@ -166,6 +165,13 @@ namespace RunAndGun.Space
         {
             Instance.OnPlayerHealthPointsAdded?.Invoke(value);
             GlobalBuffer.gamePoints.CurrentHealth += value;
+
+            //Set back health to max health that is 100
+            if (GlobalBuffer.gamePoints.CurrentHealth > 100) 
+            {
+                GlobalBuffer.gamePoints.CurrentHealth = 100;
+            }
+
             Instance.UpdateHealthPoints();
         }
 

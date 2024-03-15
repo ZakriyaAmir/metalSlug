@@ -6644,6 +6644,7 @@ GameObject:
   - component: {fileID: 8206625595361013018}
   - component: {fileID: 6136469374097705513}
   - component: {fileID: 5582154708147068776}
+  - component: {fileID: 8361421230221960554}
   m_Layer: 0
   m_Name: FlamesHazard (1)
   m_TagString: Untagged
@@ -6705,6 +6706,19 @@ MonoBehaviour:
     m_Bits: 512
   damageValue: 5
   damageRateInSeconds: 1
+--- !u!114 &8361421230221960554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891170574298777686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f33a7532eeee5a42821cc1cc72bbc8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioName: burning
 --- !u!1 &7044530655128220601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6716,6 +6730,7 @@ GameObject:
   - component: {fileID: 1038909094761810866}
   - component: {fileID: 4833020843556879545}
   - component: {fileID: 1577850975449383119}
+  - component: {fileID: 4146301293100593200}
   m_Layer: 0
   m_Name: FlamesHazard
   m_TagString: Untagged
@@ -6777,6 +6792,19 @@ MonoBehaviour:
     m_Bits: 512
   damageValue: 5
   damageRateInSeconds: 1
+--- !u!114 &4146301293100593200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044530655128220601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f33a7532eeee5a42821cc1cc72bbc8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioName: burning
 --- !u!1 &7052656132464152999
 GameObject:
   m_ObjectHideFlags: 0
